@@ -3,53 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUXE SPA | Modern Wellness</title>
-    <link rel="stylesheet" href="style.css">
+    <title>THE ZENITH | #1 World-Class Luxury Spa</title>
+    <!-- Modern Fonts -->
     <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <div class="logo">LUXE SPA</div>
-        <div class="nav-links">
-            <a href="#services">Treatments</a>
-            <a href="#booking" class="btn-outline">Book Now</a>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-overlay">
-            <h1>Reclaim Your Calm</h1>
-            <p>Modern sanctuary for the refined soul.</p>
-            <a href="#booking" class="btn-primary">Reserve Experience</a>
-        </div>
-    </section>
-
-    <section id="booking" class="booking-section">
-        <div class="container">
-            <h2>Online Reservation</h2>
-            <p>Select your treatment and preferred time below.</p>
-            <!-- Formspree Integration -->
-            <form action="https://formspree.io" method="POST" class="booking-form">
-                <div class="form-group">
-                    <input type="text" name="name" placeholder="Full Name" required>
-                    <input type="email" name="email" placeholder="Email Address" required>
+    <!-- Smooth Scroll Wrapper -->
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <nav class="glass-nav">
+                <div class="logo">ZENITH</div>
+                <div class="social-nav">
+                    <!-- Instagram-style Circular Button -->
+                    <div class="about-circle" id="about-btn">
+                        <img src="https://images.unsplash.com" alt="About">
+                        <span>About</span>
+                    </div>
+                    <!-- Facebook-style Pill Button -->
+                    <a href="#booking" class="fb-contact-btn">Contact Us</a>
                 </div>
-                <div class="form-group">
-                    <select name="service" required>
-                        <option value="" disabled selected>Select Treatment</option>
-                        <option value="Aromatherapy">Aromatherapy Massage</option>
-                        <option value="Deep Tissue">Deep Tissue Massage</option>
-                        <option value="Advanced Facial">Advanced Radiant Facial</option>
-                    </select>
-                    <input type="date" name="date" required>
+            </nav>
+
+            <header class="hero">
+                <div class="flying-content">
+                    <h1 class="reveal">Eternal Elegance</h1>
+                    <p class="reveal">The World's Most Exclusive Wellness Sanctuary</p>
+                    <div class="hero-btns reveal">
+                        <a href="#booking" class="btn-main">Begin Journey</a>
+                    </div>
                 </div>
-                <textarea name="message" placeholder="Special requests or preferences..."></textarea>
-                <!-- Honeypot to prevent spam -->
-                <input type="text" name="_gotcha" style="display:none">
-                <button type="submit" class="btn-primary">Confirm Request</button>
-            </form>
+            </header>
+
+            <section class="booking-section" id="booking">
+                <div class="booking-card reveal">
+                    <h2>Priority Reservation</h2>
+                    <form action="https://formspree.io" method="POST">
+                        <input type="text" name="name" placeholder="Name" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <select name="service">
+                            <option>Royal Thai Massage</option>
+                            <option>Golden Leaf Facial</option>
+                        </select>
+                        <button type="submit">Request Access</button>
+                    </form>
+                </div>
+            </section>
+
         </div>
-    </section>
+    </div>
+
+    <!-- GSAP & Smooth Scroll Scripts -->
+    <script src="https://cdnjs.cloudflare.com"></script>
+    <script src="https://cdnjs.cloudflare.com"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Flying Entrance Animation
+        gsap.from(".reveal", {
+            duration: 1.5,
+            y: 100,
+            opacity: 0,
+            stagger: 0.3,
+            ease: "power4.out"
+        });
+
+        // Scroll-triggered flying effect for sections
+        gsap.from(".booking-card", {
+            scrollTrigger: {
+                trigger: ".booking-card",
+                start: "top 80%",
+                scrub: 1
+            },
+            scale: 0.8,
+            opacity: 0,
+            y: 50
+        });
+    </script>
 </body>
 </html>
-
